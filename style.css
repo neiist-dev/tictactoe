@@ -1,73 +1,83 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     text-align: center;
+    background-color: #f0f4f8; 
 }
 
-#hd{
-    margin:30px;
-    margin-top:30px;
-    color: #fff;
+#hd {
+    margin: 30px;
+    margin-top: 30px;
+    color: #231942;
 }
-.container{
-    margin-top:30px;
-    height: 70vh;
+
+.container {
+    margin-top: 30px;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
-.game{
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap:1.5vh;
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2vmin;
+    width: 80vmin;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
 }
 
-.box{
-    height: 18vmin;
-    width: 18vmin;
+.box {
+    width: 100%;
+    height: 100%;
     border-radius: 1rem;
     border: none;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
-    font-size: 8vmin;
+    font-size: 10vmin;
     color: white;
     background-color: blue;
+    cursor: pointer;
 }
 
-#reset-btn{
+.box:disabled {
+    cursor: not-allowed;
+}
+
+#reset-btn {
     margin: 30px;
     padding: 1rem;
     font-size: 1.25rem;
     background-color: #231942;
     border-radius: 1rem;
-    border:none;
-    color:#fff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
 }
 
-#new-btn{
+#new-btn {
     padding: 1rem;
     font-size: 1.25rem;
     background-color: #231942;
     border-radius: 1rem;
-    border:none;
-    color:#fff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
 }
 
-#msg{
+#msg {
     font-size: 8vh;
+    color: #231942;
 }
 
-.msg-container{
-    height: 100vmin;
+.msg-container {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,11 +85,10 @@ body{
     gap: 2rem;
 }
 
-
-.hide{
+.hide {
     display: none;
 }
 
-.hide2{
-    display:inline;
+.hide2 {
+    display: inline;
 }
