@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/neiist-dev/tictactoe/compare/v1.1.0...v1.1.1) (2026-05-16)
+
+
+### Bug Fixes
+
+* adjust formating ([0cedea6](https://github.com/neiist-dev/tictactoe/commit/0cedea634129e19622ae8e9b9362a166c0a3013f))
+
 ## [1.1.0](https://github.com/neiist-dev/tictactoe/compare/1.0.0...v1.1.0) (2026-05-16)
 
 
