@@ -4,6 +4,8 @@ class TicTacToe {
     this.currentPlayer = 1;
     this.gameOver = false;
     this.moveCount = 0;
+    this.isComputerThinking = false;
+    this.difficulty = 'hard';
 
     this.winPatterns = [
       [0, 1, 2], [3, 4, 5], [6, 7, 8], //Rows
@@ -16,7 +18,8 @@ class TicTacToe {
     this.msgContainer = document.querySelector(".msg-container");
     this.msg = document.querySelector("#msg");
     this.resetButton = document.querySelector("#reset-btn");
-    this.newButton = document.querySelector("#new-btn")
+    this.newButton = document.querySelector("#new-btn");
+    this.difficultySelect = document.querySelector("#difficulty");
 
     //Mount event listeners
     this.init();
@@ -28,16 +31,22 @@ class TicTacToe {
     });
     this.resetButton.addEventListener("click", () => this.resetGame());
     this.newButton.addEventListener("click", () => this.resetGame());
+    this.difficultySelect.addEventListener("change", (e) => {
+      this.difficulty = e.target.value;
+      this.resetGame();
+    });
   }
 
   handleMove(index) {
-    if (this.board[index] !== null || this.gameOver)
+    if (this.board[index] !== null || this.gameOver || this.isComputerThinking)
       return;
 
     this.applyMove(index);
 
-    if (!this.gameOver && this.currentPlayer === -1)
+    if (!this.gameOver && this.currentPlayer === -1) {
+      this.isComputerThinking = true; // Lock the board
       setTimeout(() => this.computerPlay(), 300);
+    }
   }
 
   applyMove(index) {
@@ -68,25 +77,39 @@ class TicTacToe {
     this.currentPlayer = 1;
     this.gameOver = false;
     this.moveCount = 0;
+    this.isComputerThinking = false; // Unlock the board
 
     this.msgContainer.classList.add("hide");
     this.render();
   }
 
   computerPlay() {
-    let bestScore = -Infinity;
     let move;
-    for (let i = 0; i < 9; ++i)
-      if (this.board[i] === null) {
-        this.board[i] = -1;
-        let score = this.miniMax(this.board, 0, false);
-        this.board[i] = null;
-        if (score > bestScore) {
-          bestScore = score;
-          move = i;
+    // Normal difficulty:
+    if (this.difficulty === 'normal' && Math.random() < 0.5) {
+      let availableMoves = [];
+      for (let i = 0; i < 9; i++) {
+        if (this.board[i] === null) availableMoves.push(i);
+      }
+      move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    } else {
+      // Hard difficulty: Minimax
+      let bestScore = -Infinity;
+      for (let i = 0; i < 9; ++i) {
+        if (this.board[i] === null) {
+          this.board[i] = -1;
+          let score = this.miniMax(this.board, 0, false);
+          this.board[i] = null;
+          if (score > bestScore) {
+            bestScore = score;
+            move = i;
+          }
         }
       }
+    }
+    
     this.applyMove(move);
+    this.isComputerThinking = false; // Unlock the board after playing
   }
 
   miniMax(boardState, depth, isMaximazing) {

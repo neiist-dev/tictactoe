@@ -92,3 +92,26 @@ body {
 .hide2 {
     display: inline;
 }
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+#difficulty {
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #231942;
+    border-radius: 1rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+
+#reset-btn {
+    margin: 0; 
+}
