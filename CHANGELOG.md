@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/neiist-dev/tictactoe/compare/v1.1.1...v1.2.0) (2026-05-16)
+
+
+### Features
+
+* **difficulty:** new normal or hard selector ([2170354](https://github.com/neiist-dev/tictactoe/commit/21703548bc8d6ac55966534782904ce5b279b09d))
+
+
+### Bug Fixes
+
+* lock board when computer is playing ([2170354](https://github.com/neiist-dev/tictactoe/commit/21703548bc8d6ac55966534782904ce5b279b09d))
+
 ## [1.1.1](https://github.com/neiist-dev/tictactoe/compare/v1.1.0...v1.1.1) (2026-05-16)
 
 
